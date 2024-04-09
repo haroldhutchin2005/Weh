@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get('/gdphtop', async (req, res) => {
     const url = 'https://gdph.ps.fhgdps.com/tools/stats/top24h.php';
