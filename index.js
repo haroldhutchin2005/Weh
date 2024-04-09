@@ -8,8 +8,15 @@ const PORT = process.env.PORT || 3000;
 app.get('/gdphtop', async (req, res) => {
     const url = 'https://gdph.ps.fhgdps.com/tools/stats/top24h.php';
 
+    const headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive'
+    };
+
     try {
-        const response = await axios.get(url);
+        const response = await axios.get(url, { headers });
         const html = response.data;
         const $ = cheerio.load(html);
 
